@@ -1,0 +1,100 @@
+[
+  {
+    "id": "main-quest",
+    "title": "The Road to Keynote",
+    "description": "Become the surprise keynote speaker before the conference ends.",
+    "objectives": [
+      { "id": "get-badge", "description": "Recover your lost conference badge", "completed": false },
+      { "id": "earn-rep", "description": "Earn reputation with conference attendees", "completed": false },
+      { "id": "recover-slides", "description": "Discover why keynote slides disappeared", "completed": false },
+      { "id": "deliver-keynote", "description": "Earn speaker credentials and deliver the keynote", "completed": false }
+    ],
+    "completed": false,
+    "rewardReputation": 50
+  },
+  {
+    "id": "badge-quest",
+    "title": "Lost and Found",
+    "description": "Someone found your badge. Track it down.",
+    "objectives": [
+      { "id": "talk-registration", "description": "Ask the Registration Manager about your badge", "completed": false },
+      { "id": "find-badge", "description": "Retrieve your badge from the grabber machine in Expo Hall", "completed": false }
+    ],
+    "completed": false,
+    "rewardItems": ["conference-badge"],
+    "rewardReputation": 5,
+    "triggersQuest": "main-quest"
+  },
+  {
+    "id": "vendor-quest",
+    "title": "Demo Day Rescue",
+    "description": "A vendor's demo is broken and they're panicking. Help them save face.",
+    "objectives": [
+      { "id": "visit-vendor", "description": "Visit Vendor Row and talk to the Vendor Rep", "completed": false },
+      { "id": "get-usb", "description": "Get the deployment USB from Zane in Coffee Bar or Server Room", "completed": false },
+      { "id": "fix-demo", "description": "Return the USB and fix the demo", "completed": false }
+    ],
+    "completed": false,
+    "rewardItems": ["vendor-coupon"],
+    "rewardReputation": 15
+  },
+  {
+    "id": "slide-quest",
+    "title": "Mystery of the Missing Slides",
+    "description": "The keynote slides vanished. Find out what happened.",
+    "objectives": [
+      { "id": "ask-organizer", "description": "Ask the Conference Organizer about the missing slides", "completed": false },
+      { "id": "find-courier", "description": "Locate the VIP courier and recover the presentation data", "completed": false }
+    ],
+    "completed": false,
+    "rewardItems": ["presentation-data"],
+    "rewardReputation": 25
+  },
+  {
+    "id": "rooftop-quest",
+    "title": "VIP Access",
+    "description": "You need the Speaker Pass and a VIP invite to access the private keynote suite.",
+    "objectives": [
+      { "id": "get-keycard", "description": "Find the lost VIP keycard", "completed": false },
+      { "id": "get-pass", "description": "Earn the Speaker Pass from the conference organizer", "completed": false },
+      { "id": "reach-rooftop", "description": "Reach the Rooftop Lounge VIP event", "completed": false }
+    ],
+    "completed": false,
+    "rewardItems": ["speaker-pass"],
+    "rewardReputation": 20
+  },
+  {
+    "id": "keynote-quest",
+    "title": "The Main Event",
+    "description": "You're ready. Deliver the keynote and blow everyone away.",
+    "objectives": [
+      { "id": "deliver", "description": "Deliver the keynote speech", "completed": false }
+    ],
+    "completed": false,
+    "rewardItems": ["presentation-clicker"],
+    "rewardReputation": 30
+  },
+  {
+    "id": "startup-quest",
+    "title": "Headhunted",
+    "description": "A startup founder is impressed with your problem-solving skills.",
+    "objectives": [
+      { "id": "meet-founder", "description": "Talk to the Startup Founder at Vendor Row", "completed": false },
+      { "id": "impress-founder", "description": "Complete at least two quests before accepting their offer", "completed": false }
+    ],
+    "completed": false,
+    "rewardItems": ["startup-offer"],
+    "rewardReputation": 10
+  },
+  {
+    "id": "wifi-quest",
+    "title": "The Accidental Sysadmin",
+    "description": "Reboot the conference server in the Server Room. Or don't.",
+    "objectives": [
+      { "id": "fix-server", "description": "Investigate the server rack in the Server Room", "completed": false }
+    ],
+    "completed": false,
+    "rewardItems": ["presentation-clicker"],
+    "rewardReputation": -20
+  }
+]

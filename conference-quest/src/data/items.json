@@ -1,0 +1,101 @@
+[
+  {
+    "id": "conference-badge",
+    "name": "Conference Badge",
+    "description": "Official conference badge. Access to all general sessions and expo areas.",
+    "icon": "badge.png",
+    "keyItem": true
+  },
+  {
+    "id": "lost-badge",
+    "name": "Lost Badge",
+    "description": "A stray conference badge found in the parking garage. Looks like it belongs to someone from TechCorp.",
+    "icon": "badge.png",
+    "keyItem": true
+  },
+  {
+    "id": "laptop",
+    "name": "Laptop",
+    "description": "Your trusty development laptop. Battery at 23%.",
+    "icon": "laptop.png",
+    "keyItem": true
+  },
+  {
+    "id": "usb-drive",
+    "name": "USB Drive",
+    "description": "A standard USB 3.0 flash drive. 64GB, mostly empty.",
+    "icon": "usb.png",
+    "keyItem": true
+  },
+  {
+    "id": "mystery-flash-drive",
+    "name": "Mystery Flash Drive",
+    "description": "An unlabeled flash drive found near the registration desk. Smells faintly of ocean.",
+    "icon": "usb-red.png",
+    "keyItem": true
+  },
+  {
+    "id": "power-bank",
+    "name": "Power Bank",
+    "description": "A 20000mAh battery pack. Enough to charge a phone... or a very small laptop.",
+    "icon": "battery.png"
+  },
+  {
+    "id": "vendor-coupon",
+    "name": "Vendor Coupon",
+    "description": "A free t-shirt coupon from CloudNine Systems. Sizes: M only.",
+    "icon": "coupon.png"
+  },
+  {
+    "id": "lost-keycard",
+    "name": "Lost Keycard",
+    "description": "A keycard to the VIP Rooftop Lounge. Room 2194'd.",
+    "icon": "keycard.png",
+    "keyItem": true
+  },
+  {
+    "id": "presentation-clicker",
+    "name": "Presentation Clicker",
+    "description": "A wireless presenter. Laser pointer included. Useful for pretending to know what you're talking about.",
+    "icon": "clicker.png"
+  },
+  {
+    "id": "coffee-voucher",
+    "name": "Coffee Voucher",
+    "description": "Free drink at the conference coffee bar. Expires at 5pm.",
+    "icon": "coffee.png"
+  },
+  {
+    "id": "speaker-pass",
+    "name": "Speaker Pass",
+    "description": "Official Speaker Pass. Backstage access to the Conference Theater.",
+    "icon": "pass.png",
+    "keyItem": true
+  },
+  {
+    "id": "napkins",
+    "name": "Napkins",
+    "description": "A handful of napkins from the coffee bar. Good for emergency keyboard cleaning.",
+    "icon": "napkins.png"
+  },
+  {
+    "id": "badge-template",
+    "name": "Badge Template",
+    "description": "A blank badge template from Registration. Probably shouldn't fill this out for someone else.",
+    "icon": "badge-template.png"
+  },
+  {
+    "id": "presentation-data",
+    "name": "Presentation Data",
+    "description": "The recovered keynote slides. Titled 'Why My Startup Will IPO by Q4 (Copyright Me 2026)'",
+    "icon": "data.png",
+    "keyItem": true
+  },
+  {
+    "id": "startup-offer",
+    "name": "Startup Offer",
+    "description": "A formal job offer from QuantumByte. Includes equity, a standing desk, and unlimited kombucha.",
+    "icon": "offer.png",
+    "keyItem": true
+  }
+]

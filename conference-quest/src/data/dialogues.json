@@ -1,0 +1,438 @@
+[
+  {
+    "npcId": "registration-manager",
+    "greeting": "rm-greeting",
+    "nodes": {
+      "rm-greeting": {
+        "id": "rm-greeting",
+        "speaker": "registration-manager",
+        "text": "Welcome to DevConnect 2026! I'm Marlene, Registration Manager. Are you lost, or are you actually supposed to be here?",
+        "choices": [
+          { "id": "c1", "text": "I lost my badge. Can you reprint it?", "nextNode": "rm-badge" },
+          { "id": "c2", "text": "Just browsing. Which talks are good?", "nextNode": "rm-talks" },
+          { "id": "c3", "text": "Right, I should be around. Thanks!", "nextNode": "end" }
+        ]
+      },
+      "rm-badge": {
+        "id": "rm-badge",
+        "speaker": "registration-manager",
+        "text": "We got a report of a badge found in the Expo Hall near the grabber machine. Want me to send Security? Or would you rather... retrieve it yourself?",
+        "choices": [
+          { "id": "c1", "text": "I'll go get it myself. Thanks!", "nextNode": "rm-badge-go", "effect": "startQuest:badge-quest" },
+          { "id": "c2", "text": "Send Security, I'm too important to run errands.", "nextNode": "rm-badge-sec", "reputation": -5 },
+          { "id": "c3", "text": "Never mind, I'll figure it out.", "nextNode": "end" }
+        ]
+      },
+      "rm-badge-go": {
+        "id": "rm-badge-go",
+        "speaker": "registration-manager",
+        "text": "Great. The gates are opening in five. Also, I've got your registration info — your talk proposal was borderline. Maybe try networking more?",
+        "choices": [
+          { "id": "c1", "text": "Noted. I'll make friends fast.", "nextNode": "end", "reputation": 2 }
+        ]
+      },
+      "rm-badge-sec": {
+        "id": "rm-badge-sec",
+        "speaker": "registration-manager",
+        "text": "Wow. Alright, I'll note your preference for VIP service. 'Too important' it is. Sorry, j/k, I actually can't do that.",
+        "choices": [
+          { "id": "c1", "text": "Just kidding. I'll go get it myself.", "nextNode": "rm-badge-go", "effect": "startQuest:badge-quest" }
+        ]
+      },
+      "rm-talks": {
+        "id": "rm-talks",
+        "speaker": "registration-manager",
+        "text": "Honestly? Everything sounds the same this year. 'AI-powered blockchain for serverless puppies.' Go figure. The only unique talk got cancelled.",
+        "choices": [
+          { "id": "c1", "text": "Cancelled? What happened?", "nextNode": "rm-cancelled" },
+          { "id": "c2", "text": "Thanks, Marlene. You rule.", "nextNode": "end", "reputation": 3 }
+        ]
+      },
+      "rm-cancelled": {
+        "id": "rm-cancelled",
+        "speaker": "registration-manager",
+        "text": "The keynote speaker 'had a last-minute family emergency.' Also, he left a very dramatic note in the green room. The organizer is definitely stressed.",
+        "choices": [
+          { "id": "c1", "text": "This sounds like a problem I could solve.", "nextNode": "rm-cancelled-interest", "reputation": 5 },
+          { "id": "c2", "text": "Interesting... and tragic.", "nextNode": "end" }
+        ]
+      },
+      "rm-cancelled-interest": {
+        "id": "rm-cancelled-interest",
+        "speaker": "registration-manager",
+        "text": "If you're serious, talk to the Conference Organizer. They're usually near the Theater stage. And Marlene appreciates ambition. (I got you. That was me.)",
+        "choices": [
+          { "id": "c1", "text": "Thanks! I'll head there now.", "nextNode": "end", "effect": "startQuest:main-quest" }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "vendor-representative",
+    "greeting": "vr-greeting",
+    "nodes": {
+      "vr-greeting": {
+        "id": "vr-greeting",
+        "speaker": "vendor-representative",
+        "text": "Hi! Welcome to CloudNine Systems! Have you tried our new AI-Powered Cloud Toaster? Half the toast, twice the machine learning!",
+        "choices": [
+          { "id": "c1", "text": "Looks like your demo is crashing.", "nextNode": "vr-crash", "condition": "hasQuest:vendor-quest" },
+          { "id": "c2", "text": "Can I help with anything?", "nextNode": "vr-help" },
+          { "id": "c3", "text": "No thanks, just looking.", "nextNode": "end" }
+        ]
+      },
+      "vr-greeting-quest-active": {
+        "id": "vr-greeting-quest-active",
+        "speaker": "vendor-representative",
+        "text": "Oh, you're back! My demo is STILL broken. The debug console is showing... colors. That's bad. Colors shouldn't be there.",
+        "choices": [
+          { "id": "c1", "text": "I'll check it out.", "nextNode": "vr-demo-check", "requiredItem": "usb-drive" },
+          { "id": "c2", "text": "Do you have a USB with the fix?", "nextNode": "vr-demo-no-usb" }
+        ]
+      },
+      "vr-help": {
+        "id": "vr-help",
+        "speaker": "vendor-representative",
+        "text": "Actually, yes. My demo kiosk keeps blue-screening right before investors walk by. The IT tech said the deployment USB might be corrupted. Can you grab a replacement from the server room?",
+        "choices": [
+          { "id": "c1", "text": "Sure, I'll head to the server room.", "nextNode": "vr-help-accept", "effect": "startQuest:vendor-quest" },
+          { "id": "c2", "text": "That sounds like a YOU problem.", "nextNode": "end", "reputation": -5 }
+        ]
+      },
+      "vr-help-accept": {
+        "id": "vr-help-accept",
+        "speaker": "vendor-representative",
+        "text": "You're a lifesaver! The IT tech is usually near the Theater or Coffee bar. And if this works, I'll give you our premium swag — a coupon for a free t-shirt!",
+        "choices": [
+          { "id": "c1", "text": "A t-shirt? I've never been more motivated.", "nextNode": "end", "reputation": 5 }
+        ]
+      },
+      "vr-crash": {
+        "id": "vr-crash",
+        "speaker": "vendor-representative",
+        "text": "Yes! It's been crashing since this morning. Every time someone important looks at it, it blue-screens. I think it's cursed.",
+        "choices": [
+          { "id": "c1", "text": "Do you have a USB with the fix?", "nextNode": "vr-demo-no-usb" },
+          { "id": "c2", "text": "I'll go talk to IT about it.", "nextNode": "vr-demo-fix", "condition": "hasItem:usb-drive" }
+        ]
+      },
+      "vr-demo-no-usb": {
+        "id": "vr-demo-no-usb",
+        "speaker": "vendor-representative",
+        "text": "I used the original USB as a drink coaster. Don't ask. The IT guy in the server room might have a replacement. Or you could just plug in your own USB. Either way, help.",
+        "choices": [
+          { "id": "c1", "text": "I know a guy who might have one.", "nextNode": "end" },
+          { "id": "c2", "text": "Let me go to the server room.", "nextNode": "end", "effect": "startQuest:vendor-quest" }
+        ]
+      },
+      "vr-demo-fix": {
+        "id": "vr-demo-fix",
+        "speaker": "vendor-representative",
+        "text": "You have a USB? Is it clean? Has it seen action? ...Okay, let's do this. Plug it in and I'll hold my breath.",
+        "choices": [
+          { "id": "c1", "text": "Here goes nothing.", "nextNode": "vr-demo-success", "effect": "useItem:usb-drive" }
+        ]
+      },
+      "vr-demo-success": {
+        "id": "vr-demo-success",
+        "speaker": "vendor-representative",
+        "text": "IT'S ALIVE! The demo is running! You just saved my Q4 targets. Take this coupon — it's for a limited edition AI Toaster-shaped speaker.",
+        "choices": [
+          { "id": "c1", "text": "Thanks! I'll treasure it forever.", "nextNode": "end", "effect": "completeQuest:vendor-quest" }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "security-guard",
+    "greeting": "sg-greeting",
+    "nodes": {
+      "sg-greeting": {
+        "id": "sg-greeting",
+        "speaker": "security-guard",
+        "text": "Good evening. I'm Officer Dan. This is my conference. Please move along unless you have pressing business.",
+        "choices": [
+          { "id": "c1", "text": "I'm looking for the VIP Rooftop Lounge.", "nextNode": "sg-vip", "requiredItem": "lost-keycard", "reputation": 2 },
+          { "id": "c2", "text": "Just lost, sorry.", "nextNode": "end" }
+        ]
+      },
+      "sg-vip": {
+        "id": "sg-vip",
+        "speaker": "security-guard",
+        "text": "That keycard is from our previous event. The account's been disabled... but between us? I'll cut you a break. Head on up.",
+        "choices": [
+          { "id": "c1", "text": "Thanks, Dan. I won't tell anyone.", "nextNode": "end", "reputation": 3 }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "startup-founder",
+    "greeting": "sf-greeting",
+    "nodes": {
+      "sf-greeting": {
+        "id": "sf-greeting",
+        "speaker": "startup-founder",
+        "text": "Hey! Nice beard. Real or conference beard? Just kidding, that's my icebreaker. I'm Priya from QuantumByte. We're disrupting the disruption space. You seem like you know things.",
+        "choices": [
+          { "id": "c1", "text": "What's QuantumByte do?", "nextNode": "sf-what" },
+          { "id": "c2", "text": "Disrupt me harder, baby.", "nextNode": "end", "reputation": -3 }
+        ]
+      },
+      "sf-what": {
+        "id": "sf-what",
+        "speaker": "startup-founder",
+        "text": "We make AI-powered stress balls for devs. Series A funded, 12 employees, a ping-pong table, and our CTO is a very good golden retriever named Pixel.",
+        "choices": [
+          { "id": "c1", "text": "I'm sold. What do you need?", "nextNode": "sf-need" },
+          { "id": "c2", "text": "This sounds insane.", "nextNode": "end", "reputation": -5 }
+        ]
+      },
+      "sf-need": {
+        "id": "sf-need",
+        "speaker": "startup-founder",
+        "text": "I need someone who can handle pressure — and by pressure I mean a broken demo, a crashing kiosk, and angry investors. If you help out at least two people around here, I want to make you an offer.",
+        "choices": [
+          { "id": "c1", "text": "I'm already busy with quests.", "nextNode": "end", "effect": "startQuest:startup-quest" }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "conference-organizer",
+    "greeting": "co-greeting",
+    "nodes": {
+      "co-greeting": {
+        "id": "co-greeting",
+        "speaker": "conference-organizer",
+        "text": "Oh no. Another attendee. I'm Derek, Conference Organizer. I have not slept in 36 hours and the keynote speaker just bailed on us.",
+        "choices": [
+          { "id": "c1", "text": "I can help! What do you need?", "nextNode": "co-help", "reputation": 5 },
+          { "id": "c2", "text": "That's rough. Have you tried coffee?", "nextNode": "co-coffee" }
+        ]
+      },
+      "co-help": {
+        "id": "co-help",
+        "speaker": "conference-organizer",
+        "text": "Ideally? A new speaker. But since this conference has 3,000 attendees and a keynote in 18 hours, I'll take miracles. Also, the speaker's USB went missing.",
+        "choices": [
+          { "id": "c1", "text": "I can deliver the keynote.", "nextNode": "co-interested" },
+          { "id": "c2", "text": "Let me investigate the missing USB.", "nextNode": "co-usb", "effect": "startQuest:slide-quest", "reputation": 5 }
+        ]
+      },
+      "co-coffee": {
+        "id": "co-coffee",
+        "speaker": "conference-organizer",
+        "text": "I've consumed enough caffeine to reanimate a Victorian child. It's not coffee. It's structural integrity. But jokes aside, you seem helpful.",
+        "choices": [
+          { "id": "c1", "text": "I'm listening. What happened?", "nextNode": "co-help", "reputation": 2 }
+        ]
+      },
+      "co-interested": {
+        "id": "co-interested",
+        "speaker": "conference-organizer",
+        "text": "You HAVE to be kidding. You know what, at this point I'll take anyone. But you need a Speaker Pass. The only way to get one is if... hmm, actually nobody's ever asked me this before.",
+        "choices": [
+          { "id": "c1", "text": "Where can I get a Speaker Pass?", "nextNode": "co-pass" },
+          { "id": "c2", "text": "Forget it. I'll find the USB.", "nextNode": "co-usb", "effect": "startQuest:slide-quest" }
+        ]
+      },
+      "co-pass": {
+        "id": "co-pass",
+        "speaker": "conference-organizer",
+        "text": "I issue them. But I'm not handing one out to just anyone — that's how I got in this mess in the first place. Do at least two good deeds here and prove you're not a flake.",
+        "choices": [
+          { "id": "c1", "text": "Challenge accepted.", "nextNode": "end", "effect": "startQuest:rooftop-quest" }
+        ]
+      },
+      "co-usb": {
+        "id": "co-usb",
+        "speaker": "conference-organizer",
+        "text": "Actually, the Speaker Pass might also unlock access to areas that could help. Visit me once you've recovered the data. And check the casino — our courier was last seen there.",
+        "choices": [
+          { "id": "c1", "text": "Will do. Let's find this USB.", "nextNode": "end" }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "influencer",
+    "greeting": "inf-greeting",
+    "nodes": {
+      "inf-greeting": {
+        "id": "inf-greeting",
+        "speaker": "influencer",
+        "text": "Oh my GOD. Are you a REAL developer or are you just here for the content? Follow for follow? No? Okay, rude.",
+        "choices": [
+          { "id": "c1", "text": "I'm a real developer. I fix things.", "nextNode": "inf-real" },
+          { "id": "c2", "text": "Can I at least get a photo?", "nextNode": "inf-photo" }
+        ]
+      },
+      "inf-real": {
+        "id": "inf-real",
+        "speaker": "influencer",
+        "text": "Prove it. I saw a vendor demo crash earlier. If you fix it, I'll give you a shoutout to my 2.4M followers. In tech, that's basically fame.",
+        "choices": [
+          { "id": "c1", "text": "I'll look into it.", "nextNode": "end", "effect": "startQuest:vendor-quest", "reputation": 3 },
+          { "id": "c2", "text": "My code doesn't beg for validation.", "nextNode": "end", "reputation": -2 }
+        ]
+      },
+      "inf-photo": {
+        "id": "inf-photo",
+        "speaker": "influencer",
+        "text": "Ugh. Fine. But I'm not doing the duck face. I have standards. ...There. Post it with #DevConnectVibes and tag me.",
+        "choices": [
+          { "id": "c1", "text": "Perfect. Now I'm famous.", "nextNode": "end", "reputation": 1 }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "it-technician",
+    "greeting": "it-greeting",
+    "nodes": {
+      "it-greeting": {
+        "id": "it-greeting",
+        "speaker": "it-technician",
+        "text": "Zane, IT. If your laptop is making a noise like a dying bird, I'm not fixing it. But I'm always happy to help people who remember my name from previous years.",
+        "choices": [
+          { "id": "c1", "text": "The Vendor's demo USB is corrupted. Can you make a new one?", "nextNode": "it-usb", "condition": "hasQuest:vendor-quest" },
+          { "id": "c2", "text": "Can you tell me about the server room?", "nextNode": "it-server" },
+          { "id": "c3", "text": "Do you have a spare USB drive?", "nextNode": "it-spare" }
+        ]
+      },
+      "it-usb": {
+        "id": "it-usb",
+        "speaker": "it-technician",
+        "text": "Ah, CloudNine's kiosk again. Classic. I've got fresh deployment media right here. Grab one and don't wipe it, I have family photos on it too.",
+        "choices": [
+          { "id": "c1", "text": "Thanks! Hope the photos are safe.", "nextNode": "end", "effect": "giveItem:usb-drive", "reputation": 5 }
+        ]
+      },
+      "it-usb-has": {
+        "id": "it-usb-has",
+        "speaker": "it-technician",
+        "text": "Looks like you already have one. Smart.",
+        "choices": [
+          { "id": "c1", "text": "Foresight is my middle name.", "nextNode": "end", "reputation": 2 }
+        ]
+      },
+      "it-server": {
+        "id": "it-server",
+        "speaker": "it-technician",
+        "text": "It's just through the Theater. Speaker Pass only. Don't go in there and start rebooting things. Last conference, an attendee 'accidentally' brought down the entire hotel for three hours.",
+        "choices": [
+          { "id": "c1", "text": "Three hours? Now THAT'S impressive.", "nextNode": "it-server-impressed", "reputation": 1 },
+          { "id": "c2", "text": "I'll be careful.", "nextNode": "end" }
+        ]
+      },
+      "it-server-impressed": {
+        "id": "it-server-impressed",
+        "speaker": "it-technician",
+        "text": "I know, right? To this day no one knows what he did. He just kept pressing buttons and laughing. True legend.",
+        "choices": [
+          { "id": "c1", "text": "A man of culture.", "nextNode": "end", "reputation": 2 }
+        ]
+      },
+      "it-spare": {
+        "id": "it-spare",
+        "speaker": "it-technician",
+        "text": "Of course. I'm a walking USB drive at this point. Here. Don't install anything weird on it.",
+        "choices": [
+          { "id": "c1", "text": "Promises, promises.", "nextNode": "end", "effect": "giveItem:usb-drive", "reputation": 3 }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "bartender",
+    "greeting": "bt-greeting",
+    "nodes": {
+      "bt-greeting": {
+        "id": "bt-greeting",
+        "speaker": "bartender",
+        "text": "Welcome to the CloudNine Rooftop! I'm Marcus. We're doing a conference special: 'The Error 500' — it's tequila, regret, and something I found in the back.",
+        "choices": [
+          { "id": "c1", "text": "I'll take one.", "nextNode": "bt-drink" },
+          { "id": "c2", "text": "Do you know anything about a VIP event here?", "nextNode": "bt-vip" },
+          { "id": "c3", "text": "Just water for me.", "nextNode": "end", "reputation": 2 }
+        ]
+      },
+      "bt-drink": {
+        "id": "bt-drink",
+        "speaker": "bartender",
+        "text": "Coming right up. That'll be $18. Or, alternatively, you could tell me your worst conference story and I'll comp it. Conference solidarity, you know?",
+        "choices": [
+          { "id": "c1", "text": "My worst story...", "nextNode": "bt-story" },
+          { "id": "c2", "text": "Keep the change. Here's $25.", "nextNode": "end", "reputation": 0 },
+          { "id": "c3", "text": "On second thought, water is fine.", "nextNode": "end", "reputation": -1 }
+        ]
+      },
+      "bt-story": {
+        "id": "bt-story",
+        "speaker": "bartender",
+        "text": "Perfect. While you drink, let me tell you about the time I forgot my own machine's password live on stage. Three thousand people. Camera flash. The sound of a thousand pity-claps.",
+        "choices": [
+          { "id": "c1", "text": "You're an inspiration, Marcus.", "nextNode": "end", "reputation": 3 }
+        ]
+      },
+      "bt-vip": {
+        "id": "bt-vip",
+        "speaker": "bartender",
+        "text": "VIP event? Upstairs. Elevator is unlocked — just tap the keycard. I don't think they've changed the codes since last year. Don't tell Security.",
+        "choices": [
+          { "id": "c1", "text": "Noted. Thanks, Marcus.", "nextNode": "end", "reputation": 3 }
+        ]
+      }
+    }
+  },
+  {
+    "npcId": "keynote-speaker",
+    "greeting": "ks-greeting",
+    "nodes": {
+      "ks-greeting": {
+        "id": "ks-greeting",
+        "speaker": "keynote-speaker",
+        "text": "Oh. You found me. Look, it's not what you think. I'm not bailing. I'm... exploring alternative engagement formats.",
+        "choices": [
+          { "id": "c1", "text": "Your slides went missing. What do you know?", "nextNode": "ks-slides" },
+          { "id": "c2", "text": "You're a keynote speaker. You have obligations.", "nextNode": "ks-obligations" }
+        ]
+      },
+      "ks-slides": {
+        "id": "ks-slides",
+        "speaker": "keynote-speaker",
+        "text": "The USB? I handed it to a courier before I left. Then I came here and... actually, can we just say I had an emergency? Because I did. Existentially.",
+        "choices": [
+          { "id": "c1", "text": "Give me the courier's info.", "nextNode": "ks-courier", "effect": "completeQuest:slide-quest:partial" },
+          { "id": "c2", "text": "You owe them a talk.", "nextNode": "ks-owes" }
+        ]
+      },
+      "ks-obligations": {
+        "id": "ks-obligations",
+        "speaker": "keynote-speaker",
+        "text": "You're right. I'm sorry. But honestly? This talk is terrible. I wrote it in 45 minutes in a hotel lobby using predictive text. You should give it.",
+        "choices": [
+          { "id": "c1", "text": "I'll give it IF I can get the slides back.", "nextNode": "ks-slides" },
+          { "id": "c2", "text": "No way. You're giving the talk.", "nextNode": "end", "reputation": -5 }
+        ]
+      },
+      "ks-courier": {
+        "id": "ks-courier",
+        "speaker": "keynote-speaker",
+        "text": "Her name is Chloe. She works VIP concierge. She said she'd be near the Casino floor. Tell her I'm sorry. Actually, no. Tell her I said the slides are at the bar.",
+        "choices": [
+          { "id": "c1", "text": "Alright, I'll find her.", "nextNode": "end", "effect": "flag:found-courier-hint:true" }
+        ]
+      },
+      "ks-owes": {
+        "id": "ks-owes",
+        "speaker": "keynote-speaker",
+        "text": "Just... take the slides. I don't care anymore. Just don't make me look worse than I already have. The USB is at the bar counter. I'll tell Security you're a guest.",
+        "choices": [
+          { "id": "c1", "text": "Deal. You owe me.", "nextNode": "end", "effect": "completeQuest:slide-quest", "effect": "giveItem:presentation-data" }
+        ]
+      }
+    }
+  }
+]

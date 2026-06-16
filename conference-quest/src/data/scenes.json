@@ -1,0 +1,439 @@
+[
+  {
+    "id": "hotel-lobby",
+    "name": "Hotel Lobby",
+    "description": "A sprawling marble lobby with a glittering chandelier. Conference attendees mill about clutching lanyards and existential dread.",
+    "background": "hotel-lobby.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-casino",
+        "x": 120,
+        "y": 400,
+        "width": 200,
+        "height": 250,
+        "label": "Exit to Casino Floor",
+        "targetScene": "casino-floor",
+        "targetSpawn": "from-lobby"
+      },
+      {
+        "id": "to-registration",
+        "x": 500,
+        "y": 500,
+        "width": 280,
+        "height": 150,
+        "label": "Conference Registration Desk",
+        "targetScene": "registration-desk",
+        "targetSpawn": "from-lobby"
+      },
+      {
+        "id": "lost-badge-hotspot",
+        "x": 900,
+        "y": 300,
+        "width": 300,
+        "height": 250,
+        "label": "Look behind the couch",
+        "action": "search-badge",
+        "lockedMessage": "Waste of time. Nothing here."
+      }
+    ],
+    "npcs": ["registration-manager", "influencer"],
+    "music": "lobby"
+  },
+  {
+    "id": "registration-desk",
+    "name": "Registration Desk",
+    "description": "Rows of computers and volunteers flying name badges at various attendees. The line is, predictably, long.",
+    "background": "registration.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-lobby",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Return to Hotel Lobby",
+        "targetScene": "hotel-lobby",
+        "targetSpawn": "from-registration"
+      },
+      {
+        "id": "to-expo",
+        "x": 1100,
+        "y": 300,
+        "width": 180,
+        "height": 400,
+        "label": "Enter Expo Hall",
+        "targetScene": "expo-hall",
+        "targetSpawn": "from-registration"
+      },
+      {
+        "id": "search-desk",
+        "x": 500,
+        "y": 350,
+        "width": 300,
+        "height": 250,
+        "label": "Search the desk for your badge",
+        "action": "search-badge-desk",
+        "lockedMessage": "Desk is locked. Manager holds the spare badges."
+      }
+    ],
+    "npcs": ["registration-manager"],
+    "music": "lobby"
+  },
+  {
+    "id": "expo-hall",
+    "name": "Expo Hall",
+    "description": "Hundreds of booths stretching into the distance. Demo music, swag, and a faint smell of regret.",
+    "background": "expo.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-registration",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Exit to Registration",
+        "targetScene": "registration-desk",
+        "targetSpawn": "from-expo"
+      },
+      {
+        "id": "to-vendor",
+        "x": 300,
+        "y": 550,
+        "width": 200,
+        "height": 170,
+        "label": "Enter Vendor Row",
+        "targetScene": "vendor-row",
+        "targetSpawn": "from-expo"
+      },
+      {
+        "id": "to-coffee",
+        "x": 1100,
+        "y": 400,
+        "width": 180,
+        "height": 300,
+        "label": "Head to Coffee Bar",
+        "targetScene": "coffee-bar",
+        "targetSpawn": "from-expo"
+      },
+      {
+        "id": "grabber-machine",
+        "x": 400,
+        "y": 200,
+        "width": 300,
+        "height": 250,
+        "label": "Claw machine (contains a badge?)",
+        "action": "use-grabber",
+        "lockedMessage": "Requires a power-up. Or patience. Probably more patience than you have."
+      }
+    ],
+    "npcs": ["influencer", "vendor-representative"],
+    "music": "expo"
+  },
+  {
+    "id": "vendor-row",
+    "name": "Vendor Row",
+    "description": "The startup alley. T-shirts, stickers, and pitches that sound suspiciously like pyramid schemes.",
+    "background": "vendor.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-expo",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Return to Expo Hall",
+        "targetScene": "expo-hall",
+        "targetSpawn": "from-vendor"
+      },
+      {
+        "id": "vendor-booth",
+        "x": 400,
+        "y": 350,
+        "width": 500,
+        "height": 300,
+        "label": "Talk to Vendor Representative",
+        "action": "talk-vendor"
+      }
+    ],
+    "npcs": ["vendor-representative", "startup-founder"],
+    "music": "expo"
+  },
+  {
+    "id": "coffee-bar",
+    "name": "Coffee Bar",
+    "description": "A brightly lit caffeine station. The barista has the thousand-yard stare of someone who has served too many lattes.",
+    "background": "coffee.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-expo",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Return to Expo Hall",
+        "targetScene": "expo-hall",
+        "targetSpawn": "from-coffee"
+      },
+      {
+        "id": "to-theater",
+        "x": 1000,
+        "y": 350,
+        "width": 250,
+        "height": 350,
+        "label": "Enter Conference Theater",
+        "targetScene": "conference-theater",
+        "targetSpawn": "from-coffee"
+      },
+      {
+        "id": "coffee-counter",
+        "x": 450,
+        "y": 400,
+        "width": 400,
+        "height": 250,
+        "label": "Order a drink",
+        "action": "coffee-bar-action"
+      }
+    ],
+    "npcs": ["it-technician"],
+    "music": "cafe"
+  },
+  {
+    "id": "conference-theater",
+    "name": "Conference Theater",
+    "description": "A massive auditorium with a massive screen and an even more massive ego. The organizers take themselves very seriously.",
+    "background": "theater.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-coffee",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Return to Coffee Bar",
+        "targetScene": "coffee-bar",
+        "targetSpawn": "from-theater"
+      },
+      {
+        "id": "to-server",
+        "x": 1000,
+        "y": 350,
+        "width": 250,
+        "height": 350,
+        "label": "Server Room (Staff Only)",
+        "targetScene": "server-room",
+        "targetSpawn": "from-theater",
+        "requiredItem": "speaker-pass",
+        "lockedMessage": "Staff only. You need the Speaker Pass to enter."
+      },
+      {
+        "id": "stage",
+        "x": 500,
+        "y": 100,
+        "width": 300,
+        "height": 200,
+        "label": "The main stage",
+        "action": "inspect-stage"
+      }
+    ],
+    "npcs": ["conference-organizer"],
+    "music": "theater"
+  },
+  {
+    "id": "rooftop-lounge",
+    "name": "Rooftop Lounge",
+    "description": "A sleek bar overlooking the Vegas skyline. People are laughing. You're not sure why.",
+    "background": "rooftop.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-elevator",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Take elevator down to Casino Floor",
+        "targetScene": "casino-floor",
+        "targetSpawn": "from-rooftop"
+      },
+      {
+        "id": "to-vip",
+        "x": 1000,
+        "y": 350,
+        "width": 250,
+        "height": 350,
+        "label": "Enter VIP Private Event",
+        "targetScene": "vip-event",
+        "targetSpawn": "from-rooftop",
+        "requiredItem": "lost-keycard",
+        "lockedMessage": "VIP Only. Security is strict. You might want to find that keycard first."
+      },
+      {
+        "id": "rooftop-bar",
+        "x": 500,
+        "y": 350,
+        "width": 300,
+        "height": 300,
+        "label": "Rooftop bar",
+        "action": "rooftop-bar-action"
+      }
+    ],
+    "npcs": ["bartender"],
+    "music": "lounge"
+  },
+  {
+    "id": "casino-floor",
+    "name": "Casino Floor",
+    "description": "Slot machines, card tables, and the distant hum of people losing money. Some things are universal.",
+    "background": "casino.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-lobby",
+        "x": 600,
+        "y": 0,
+        "width": 200,
+        "height": 250,
+        "label": "Return to Hotel Lobby",
+        "targetScene": "hotel-lobby",
+        "targetSpawn": "from-casino"
+      },
+      {
+        "id": "to-rooftop",
+        "x": 1200,
+        "y": 300,
+        "width": 80,
+        "height": 400,
+        "label": "Elevator to Rooftop Lounge",
+        "targetScene": "rooftop-lounge",
+        "targetSpawn": "from-casino"
+      },
+      {
+        "id": "casino-machine",
+        "x": 200,
+        "y": 300,
+        "width": 300,
+        "height": 300,
+        "label": "Slot machine",
+        "action": "slot-machine"
+      }
+    ],
+    "npcs": ["security-guard", "influencer"],
+    "music": "casino"
+  },
+  {
+    "id": "server-room",
+    "name": "Server Room",
+    "description": "Blinking lights, humming racks, and the distinct smell of ozone. Don't touch anything you don't understand.",
+    "background": "server.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-theater",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Exit to Conference Theater",
+        "targetScene": "conference-theater",
+        "targetSpawn": "from-server"
+      },
+      {
+        "id": "server-rack",
+        "x": 450,
+        "y": 300,
+        "width": 400,
+        "height": 300,
+        "label": "Conference main server",
+        "action": "server-rack-action"
+      }
+    ],
+    "npcs": ["it-technician"],
+    "music": "server"
+  },
+  {
+    "id": "vip-event",
+    "name": "VIP Private Event",
+    "description": "An exclusive gathering for sponsors and speakers. Champagne flows freely, and jargon flows even more freely.",
+    "background": "vip.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-rooftop",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Return to Rooftop Lounge",
+        "targetScene": "rooftop-lounge",
+        "targetSpawn": "from-vip"
+      },
+      {
+        "id": "vip-bar",
+        "x": 400,
+        "y": 300,
+        "width": 300,
+        "height": 300,
+        "label": "VIP bar",
+        "action": "vip-bar-action"
+      },
+      {
+        "id": "vip-speaker",
+        "x": 800,
+        "y": 200,
+        "width": 350,
+        "height": 350,
+        "label": "Keynote Speaker (drunk, currently)",
+        "action": "talk-vip-speaker"
+      }
+    ],
+    "npcs": ["keynote-speaker", "conference-organizer"],
+    "music": "lounge"
+  },
+  {
+    "id": "demo-room",
+    "name": "Demo Room",
+    "description": "A small enclosed space for running live demos. There's definitely not enough ventilation in here.",
+    "background": "demo.png",
+    "width": 1280,
+    "height": 720,
+    "hotspots": [
+      {
+        "id": "to-vendor",
+        "x": 0,
+        "y": 300,
+        "width": 200,
+        "height": 400,
+        "label": "Return to Vendor Row",
+        "targetScene": "vendor-row",
+        "targetSpawn": "from-demo"
+      },
+      {
+        "id": "demo-kiosk",
+        "x": 500,
+        "y": 350,
+        "width": 300,
+        "height": 200,
+        "label": "Demo kiosk",
+        "action": "demo-kiosk-action"
+      }
+    ],
+    "npcs": ["vendor-representative"],
+    "music": "expo"
+  }
+]

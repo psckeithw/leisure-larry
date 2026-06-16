@@ -1,0 +1,83 @@
+[
+  {
+    "id": "registration-manager",
+    "name": "Marlene",
+    "subtitle": "Registration Manager",
+    "color": "#4a90d9",
+    "scene": "hotel-lobby",
+    "position": { "x": 580, "y": 420 },
+    "sprite": "marlene.png"
+  },
+  {
+    "id": "vendor-representative",
+    "name": "Chip",
+    "subtitle": "CloudNine Systems",
+    "color": "#6c5ce7",
+    "scene": "vendor-row",
+    "position": { "x": 640, "y": 480 },
+    "sprite": "chip.png"
+  },
+  {
+    "id": "security-guard",
+    "name": "Officer Dan",
+    "subtitle": "Conference Security",
+    "color": "#2d3436",
+    "scene": "casino-floor",
+    "position": { "x": 800, "y": 420 },
+    "sprite": "dan.png"
+  },
+  {
+    "id": "startup-founder",
+    "name": "Priya",
+    "subtitle": "QuantumByte Founder",
+    "color": "#e17055",
+    "scene": "vendor-row",
+    "position": { "x": 480, "y": 450 },
+    "sprite": "priya.png"
+  },
+  {
+    "id": "conference-organizer",
+    "name": "Derek",
+    "subtitle": "Conference Organizer",
+    "color": "#d63031",
+    "scene": "conference-theater",
+    "position": { "x": 600, "y": 420 },
+    "sprite": "derek.png"
+  },
+  {
+    "id": "influencer",
+    "name": "Kyler",
+    "subtitle": "Tech Influencer",
+    "color": "#fdcb6e",
+    "scene": "hotel-lobby",
+    "position": { "x": 380, "y": 400 },
+    "sprite": "kyler.png"
+  },
+  {
+    "id": "it-technician",
+    "name": "Zane",
+    "subtitle": "IT Technician",
+    "color": "#00b894",
+    "scene": "server-room",
+    "position": { "x": 540, "y": 380 },
+    "sprite": "zane.png"
+  },
+  {
+    "id": "keynote-speaker",
+    "name": "Dr. Alex Mercer",
+    "subtitle": "Keynote Speaker (MIA)",
+    "color": "#6c5ce7",
+    "scene": "vip-event",
+    "position": { "x": 940, "y": 380 },
+    "sprite": "mercer.png"
+  },
+  {
+    "id": "bartender",
+    "name": "Marcus",
+    "subtitle": "Rooftop Bartender",
+    "color": "#e17055",
+    "scene": "rooftop-lounge",
+    "position": { "x": 500, "y": 420 },
+    "sprite": "marcus.png"
+  }
+]

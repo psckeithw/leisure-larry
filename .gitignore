@@ -1,0 +1,11 @@
+# Local/generated artifacts
+node_modules/
+variables.2.tf
+
+conference-quest/node_modules/
+conference-quest/tsconfig.app.tsbuildinfo
+conference-quest/src/GameContext.tsx.backup
+conference-quest/capture.cjs
+conference-quest/capture.js
+conference-quest/screenshot.png
+conference-quest/screenshots/

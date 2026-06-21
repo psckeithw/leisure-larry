@@ -12,8 +12,7 @@ export interface Npc {
   subtitle: string;
   color: string;
   scene: string;
-  x: number;
-  y: number;
+  position: { x: number; y: number };
   sprite: string;
 }
 
@@ -61,8 +60,8 @@ export interface QuestState {
 
 export interface DialogueTree {
   npcId: string;
+  greeting: string;
   nodes: Record<string, DialogueNode>;
-  startNode: string;
 }
 
 export interface DialogueNode {
@@ -76,9 +75,10 @@ export interface DialogueNode {
 export interface DialogueChoice {
   id: string;
   text: string;
-  next: string | null;
+  nextNode: string | 'end';
   effect?: (state: any) => void;
-  requires?: (state: any) => boolean;
+  condition?: (state: any) => boolean;
+  reputation?: number;
 }
 
 export interface GameState {

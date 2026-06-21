@@ -1,5 +1,18 @@
-import type { SaveData } from './data';
 import { STORAGE_KEY, SCENE_ORDER } from './data';
+
+interface SaveData {
+  currentScene: string;
+  visitedScenes: string[];
+  inventory: string[];
+  selectedItem: string | null;
+  flags: Record<string, boolean | number | string>;
+  playTime: number;
+  quests: Record<string, any>;
+  dialogueHistory: Record<string, string[]>;
+  reputation: number;
+  ending: string | null;
+  settings: { textSpeed: number };
+}
 
 type Listener = (data: SaveData) => void;
 
@@ -89,7 +102,7 @@ export class GameStore {
     this.notify();
   }
 
-  public unlockScene(sceneId: SCENE, spawn?: string): void {
+  public unlockScene(sceneId: string, spawn?: string): void {
     const next = SCENE_ORDER[SCENE_ORDER.indexOf(sceneId) + 1];
     if (next && !this.state.visitedScenes.includes(next)) {
       this.state = {

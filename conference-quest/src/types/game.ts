@@ -65,11 +65,12 @@ export interface DialogueTree {
 export interface Npc {
   id: NpcId;
   name: string;
+  subtitle?: string;
   color: string;
   scene: SceneId;
   position: { x: number; y: number };
   sprite: string;
-  dialogueTree: DialogueTree;
+  dialogueTree?: DialogueTree;
   reputationRequired?: number;
   questsAvailable?: QuestId[];
   questsTurnIn?: QuestId[];
@@ -116,6 +117,9 @@ export interface GameState {
   playTime: number;
   ending: string | null;
   settings: GameSettings;
+  dialogueActive: boolean;
+  dialogueNpc: string | null;
+  currentNodeId: string | null;
 }
 
 export interface GameSettings {

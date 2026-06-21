@@ -32,5 +32,5 @@ export async function loadQuests() {
 
 export async function loadDialogues() {
   const mod = await import('./dialogues.json');
-  return mod.default as DialogueTree[];
+  return mod.default as unknown as DialogueTree[];
 }

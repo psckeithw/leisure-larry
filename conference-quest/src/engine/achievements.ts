@@ -1,5 +1,5 @@
 import { store } from '../world/store';
-import { questMap } from '../world/data';
+import { QUEST_MAP } from '../world/data';
 
 export class Achievements {
   private history: { achievement: string; timestamp: number }[] = [];

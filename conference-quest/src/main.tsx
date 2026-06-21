@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { GameProvider } from './GameContext';
 import App from './App';
 import './index.css';
 
+console.log('[MAIN] Starting React application...');
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <GameProvider>
-      <App />
-    </GameProvider>
+    <App />
   </React.StrictMode>,
 );
+
+console.log('[MAIN] React render called');

@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
-import type { GameState, SceneId, DEFAULT_SETTINGS } from '../types/game';
+import type { GameState, SceneId } from '../types/game';
+import { DEFAULT_SETTINGS } from '../types/game';
 
 type GameEventHandler = (event: string, data?: unknown) => void;
 
@@ -21,7 +22,7 @@ class GameStateManager {
       flags: {},
       playTime: 0,
       ending: null,
-      settings: { ...DEFAULT_SETTING S },
+      settings: { ...DEFAULT_SETTINGS },
     };
     this.state = state;
     this.emit('state-changed', state);

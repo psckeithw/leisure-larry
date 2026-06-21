@@ -1,5 +1,4 @@
 import { loadQuests, loadDialogues, loadGameData } from '../../data/loader';
-import type { QuestState, GameState } from '../../store/gameStore';
 
 export class QuestEngine {
   private store: any = null;
@@ -8,8 +7,10 @@ export class QuestEngine {
 
   init(store: any): void {
     this.store = store;
-    this.rebuildFromStore();
-    store.subscribe((s: GameState) => this.onStoreChanged(s));
+    this.rebuildFromStore().catch(console.error);
+    if (typeof store?.subscribe === 'function') {
+      store.subscribe((s: any) => this.onStoreChanged(s));
+    }
   }
 
   private async rebuildFromStore(): Promise<void> {
@@ -21,15 +22,13 @@ export class QuestEngine {
     this.dialogueTrees = dialogueTrees;
   }
 
-  private onStoreChanged(state: GameState): void {
+  private onStoreChanged(state: any): void {
+    if (!state?.quests) return;
     const unstarted = this.quests.filter(q => !(q.id in state.quests));
     unstarted.forEach((quest) => {
-      const objectives = quest.objectives.map(obj => ({
-        id: obj.id,
-        description: obj.description,
-        completed: obj.completed ?? false,
-      }));
-      this.store.startQuest(quest.id);
+      if (typeof this.store?.startQuest === 'function') {
+        this.store.startQuest(quest.id);
+      }
     });
   }
 

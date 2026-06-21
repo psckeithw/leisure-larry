@@ -1,17 +1,19 @@
-import type { Scene, Npc, Item, DialogueTree, Hotspot } from './types';
+import type { DialogueTree, Hotspot } from './types';
 import { loadGameData, loadDialogues } from './data/loader';
 import { SCENE_WIDTH, SCENE_HEIGHT } from './world/constants';
 import { useGameStore } from './store/gameStore';
 import { navigation } from './engine/navigation';
 import { processHotspot } from './engine/hotspots';
 import { loadDialogueTree, dialogueEngine } from './engine/dialogue';
-import { questEngine } from './engine/systems/questEngine';
 import { triggerEnding } from './engine/systems/endingEngine';
 
 export interface EngineScene {
   id: string;
   name: string;
   description: string;
+  background: string;
+  width: number;
+  height: number;
   hotspots: Hotspot[];
   npcs: string[];
 }
@@ -21,8 +23,10 @@ export interface EngineNpc {
   name: string;
   subtitle: string;
   color: string;
+  scene: string;
   position: { x: number; y: number };
-  dialogueTree: DialogueTree;
+  sprite: string;
+  dialogueTree?: DialogueTree;
 }
 
 export interface EngineItem {
@@ -51,8 +55,15 @@ export interface GameEngineData {
 }
 
 export async function createGameEngine(): Promise<GameEngineData> {
+  console.log('[GameEngine] Starting createGameEngine...');
+  
+  console.log('[GameEngine] Loading game data...');
   const { items, scenes, npcs } = await loadGameData();
+  console.log('[GameEngine] Game data loaded:', { items: items.length, scenes: scenes.length, npcs: npcs.length });
+  
+  console.log('[GameEngine] Loading dialogues...');
   const dialogueTrees = await loadDialogues();
+  console.log('[GameEngine] Dialogues loaded:', { count: dialogueTrees.length });
 
   const sceneMap = new Map<string, EngineScene>();
   for (const scene of scenes) {
@@ -60,6 +71,9 @@ export async function createGameEngine(): Promise<GameEngineData> {
       id: scene.id,
       name: scene.name,
       description: scene.description,
+      background: scene.background,
+      width: scene.width,
+      height: scene.height,
       hotspots: scene.hotspots,
       npcs: scene.npcs,
     });
@@ -71,10 +85,12 @@ export async function createGameEngine(): Promise<GameEngineData> {
     npcMap.set(npc.id, {
       id: npc.id,
       name: npc.name,
-      subtitle: npc.subtitle,
+      subtitle: npc.subtitle ?? '',
       color: npc.color,
+      scene: npc.scene,
       position: npc.position,
-      dialogueTree: tree ?? { npcId: npc.id, greeting: '', nodes: {} },
+      sprite: npc.sprite,
+      dialogueTree: tree,
     });
   }
 

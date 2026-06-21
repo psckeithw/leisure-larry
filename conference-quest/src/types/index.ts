@@ -8,11 +8,14 @@ export type {
   Npc,
   Item,
   GameState,
-  SavedGameState,
-  GameStore,
-  Settings,
+  GameSettings,
   GameEnding,
-  QuestState,
-} from './types';
-export { DEFAULT_SETTINGS, ENDING_TITLES } from './types';
-export type { GameEnding as validEndings } from './types';
+  ItemId,
+  SceneId,
+  NpcId,
+  QuestId,
+  DialogueNodeId,
+  InventoryState,
+  QuestObjective,
+} from './game';
+export { DEFAULT_SETTINGS, ENDING_TITLES, INITIAL_SCENE, GAME_START_INTRO } from './game';

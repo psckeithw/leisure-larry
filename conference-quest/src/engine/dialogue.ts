@@ -18,7 +18,7 @@ class DialogueEngineInstance {
     const choice = node.choices.find((c) => c.id === choiceId);
     if (!choice) return null;
     if (choice.effect) choice.effect(useGameStore.getState());
-    return choice.next;
+    return choice.nextNode;
   }
 
   node(nodeId: string): DialogueNode | undefined {

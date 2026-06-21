@@ -1,3 +1,7 @@
+import type { ItemId, QuestId, DialogueNodeId, NpcId, SceneId } from '../types/game';
+
+export type { ItemId, QuestId, DialogueNodeId, NpcId, SceneId };
+
 export interface Item {
   id: ItemId;
   name: string;
@@ -409,6 +413,7 @@ export const SCENES: Scene[] = [
     npcs: ['vendor-representative'],
   },
 ];
+export const scenes = SCENES;
 
 export const NPCS: Npc[] = [
   { id: 'registration-manager', name: 'Marlene', subtitle: 'Registration Manager', color: '#4a90d9', scene: 'hotel-lobby', position: { x: 0.6, y: 0.65 }, sprite: 'marlene.png' },

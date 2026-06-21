@@ -135,3 +135,32 @@ If the dev server is not running, start it with:
 ```bash
 npm run dev
 ```
+
+## Code Review Summary
+
+**Critical issues**
+- Wrong destructuring in `GameEngine.ts` (fixed to `const dialogueTrees = await loadDialogues();`).
+- Unused import `questEngine` in `GameEngine.ts`.
+- `as any` casts hide type errors.
+- Excessive `any` usage across the codebase (≈ 30 places).
+- No error handling for async data loads.
+
+**Medium issues**
+- Mixed responsibilities in `GameEngine.ts` (engine creation + UI store coupling).
+- Hard‑coded UI strings in hotspot handlers.
+- Inconsistent relative import style (`../` vs `./`).
+- Types and runtime constants mixed in the same files.
+
+**Low‑severity / style**
+- Missing JSDoc comments.
+- Long return object in `createGameEngine` could be split.
+- Minor performance tweaks (store selectors).
+
+**Recommendations**
+1. Initialise a Git repo (`git init`, initial commit).
+2. Convert all `../` imports inside `src/` to `./` (or use an alias).
+3. Replace `any` casts with proper types, especially in `GameEngine.ts`.
+4. Remove dead imports and add error handling around async loads.
+5. Add unit tests for engine initialization.
+6. Consider an import alias (`@/`) for readability.
+

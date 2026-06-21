@@ -1,7 +1,6 @@
-import { useGameContext } from '../GameContext';
 
-export function DialogueUI({ node, onChoice, onClose }: { node: any; onChoice: (choiceId: string) => void; onClose: () => void }) {
-  const speakerName = node?.speaker ?? 'NPC';
+export function DialogueUI({ node, onChoice, onClose, speakerName }: { node: any; onChoice: (choiceId: string) => void; onClose: () => void; speakerName?: string }) {
+  const displayName = speakerName ?? node?.speaker ?? 'NPC';
   const text = node?.text ?? '';
   const choices = node?.choices ?? [];
 

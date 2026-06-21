@@ -14,6 +14,9 @@ export interface GameStore extends GameState {
   playTime: number;
   ending: string | null;
   settings: GameSettings;
+  dialogueActive: boolean;
+  dialogueNpc: string | null;
+  currentNodeId: string | null;
 
   setCurrentScene: (sceneId: string) => void;
   markSceneVisited: (sceneId: string) => void;
@@ -58,6 +61,9 @@ export const useGameStore = create<GameStore>()(
       dialogueHistory: {},
       playTime: 0,
       ending: null,
+      dialogueActive: false,
+      dialogueNpc: null,
+      currentNodeId: null,
       settings: DEFAULT_SETTINGS,
 
       setCurrentScene: (sceneId: string) => {
@@ -173,8 +179,11 @@ export const useGameStore = create<GameStore>()(
           flags: {},
           dialogueHistory: {},
           playTime: 0,
-          ending: null,
-        });
+        ending: null,
+        dialogueActive: false,
+        dialogueNpc: null,
+        currentNodeId: null,
+      });
       },
 
       incrementPlayTime: (delta: number) => {
@@ -195,6 +204,9 @@ export const useGameStore = create<GameStore>()(
         dialogueHistory: state.dialogueHistory,
         playTime: state.playTime,
         ending: state.ending,
+        dialogueActive: state.dialogueActive,
+        dialogueNpc: state.dialogueNpc,
+        currentNodeId: state.currentNodeId,
         settings: state.settings,
       }),
     }
